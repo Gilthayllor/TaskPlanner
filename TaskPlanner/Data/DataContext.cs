@@ -33,11 +33,14 @@ namespace TaskPlanner.Data
                     .HasForeignKey(x => x.UserId);
             });
 
+            var userId = Guid.NewGuid().ToString();
+
             var applicationUser = new ApplicationUser("Admin", "TaskPlanner")
             {
                 UserName = "admin@taskplanner.com",
                 Email = "admin@taskplanner.com",
-                NormalizedEmail = "ADMIN@TASKPLANNER.COM"
+                NormalizedEmail = "ADMIN@TASKPLANNER.COM",
+                Id = userId
             };
 
             var passwordHasher = new PasswordHasher<ApplicationUser>();
@@ -45,6 +48,12 @@ namespace TaskPlanner.Data
             applicationUser.PasswordHash = passwordHasher.HashPassword(applicationUser, "Admin@123");
 
             builder.Entity<ApplicationUser>().HasData(applicationUser);
+
+            builder.Entity<TaskItem>().HasData(new TaskItem[] {
+                new TaskItem("Estudar C#", "Estudar C# durante a noite.", userId),
+                new TaskItem("Trabalhar", "Trabalhar usando C#.", userId),
+                new TaskItem("Jantar", "Jantar com minha esposa.", userId)
+            });
 
             base.OnModelCreating(builder);
         }
