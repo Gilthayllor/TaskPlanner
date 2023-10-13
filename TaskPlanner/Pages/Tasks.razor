@@ -1,0 +1,58 @@
+﻿@page "/tasks"
+
+@inject ITaskService _taskService;
+
+<div>
+    <div class="wrapper">
+        <div class="header">
+            <h1 class="title">Tarefas</h1>
+            <button class="btn-acao-task add" type="button">
+                Nova Tarefa
+            </button>
+        </div>
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Descrição</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (_tasks != null)
+                    {
+                        @foreach (var task in _tasks)
+                        {
+                            <tr @key="task.Id">
+                                <td>@task.Title</td>
+                                <td>@task.Description</td>
+                                <td>
+                                    @if (task.Completed)
+                                    {
+                                        <span class="material-symbols-outlined">task_alt</span>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn-acao-task">
+                                            Concluir Tarefa
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@code {
+    private IEnumerable<TaskItemViewModel> _tasks = new List<TaskItemViewModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _tasks = await _taskService.GetAllTasks();
+    }
+}

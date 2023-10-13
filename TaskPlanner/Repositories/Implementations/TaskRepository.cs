@@ -28,6 +28,11 @@ namespace TaskPlanner.Repositories.Implementations
         {
             return await _dataContext.Tasks.Where(x => x.UserId == userId).ToListAsync();
         }
+        
+        public async Task<IEnumerable<TaskItem>> GetAllTasks()
+        {
+            return await _dataContext.Tasks.ToListAsync();
+        }
 
         public async Task<TaskItem?> GetTaskById(string id)
         {

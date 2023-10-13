@@ -28,6 +28,9 @@ namespace TaskPlanner.Data
                     .IsRequired()
                     .HasMaxLength(255);
 
+                x.Property(x => x.UserId)
+                    .IsRequired();
+
                 x.HasOne(x => x.User)
                     .WithMany(x => x.Tasks)
                     .HasForeignKey(x => x.UserId);
@@ -50,9 +53,9 @@ namespace TaskPlanner.Data
             builder.Entity<ApplicationUser>().HasData(applicationUser);
 
             builder.Entity<TaskItem>().HasData(new TaskItem[] {
-                new TaskItem("Estudar C#", "Estudar C# durante a noite.", userId),
-                new TaskItem("Trabalhar", "Trabalhar usando C#.", userId),
-                new TaskItem("Jantar", "Jantar com minha esposa.", userId)
+                new TaskItem("Estudar C#", "Estudar C# durante a noite.") {UserId = userId},
+                new TaskItem("Trabalhar", "Trabalhar usando C#.") {UserId = userId},
+                new TaskItem("Jantar", "Jantar com minha esposa.") {UserId = userId}
             });
 
             base.OnModelCreating(builder);

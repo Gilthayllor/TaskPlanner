@@ -5,7 +5,7 @@ using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Services.Implementations
 {
-    public class TaskService : ITaskservice
+    public class TaskService : ITaskService
     {
         private readonly IMapper _mapper;
         private readonly ITaskRepository _taskRepository;
@@ -40,6 +40,19 @@ namespace TaskPlanner.Services.Implementations
                 throw;
             }
         }
+        
+        public async Task<IEnumerable<TaskItemViewModel>> GetAllTasks()
+        {
+            try
+            {
+                var result = await _taskRepository.GetAllTasks();
+                return _mapper.Map<IEnumerable<TaskItemViewModel>>(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public async Task<TaskItemViewModel?> GetTaskById(string id)
         {
@@ -59,10 +72,7 @@ namespace TaskPlanner.Services.Implementations
         {
             try
             {
-                var result = await _taskRepository.GetTaskById(task.Id);
-
-                if (result is null)
-                    throw new Exception("Task não encontrada.");
+                var result = await _taskRepository.GetTaskById(task.Id) ?? throw new Exception("Task não encontrada.");
 
                 _mapper.Map(task, result);
 

@@ -1,3 +1,21 @@
+#app {
+    height: 100vh;
+}
+
+:root {
+    --white: #ffffff;
+    --primary: #011638ff;
+    --primary-hover: #002262;
+    --secondary: #364156ff;
+    --background-primary: #EFEFEF;
+    --silver: #cdcdcdff;
+    --action-2: #ff595c;
+    --action-2-hover: #ff7174;
+    --action-1: #32936fff;
+    --action-1-hover: #27a979;
+}
+
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
@@ -26,3 +44,38 @@
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+:focus {
+    outline: transparent;
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: var(--background-primary);
+    color: var(--primary);
+    -webkit-font-smoothing: antialiased;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+body, input, textarea, button {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.wrapper-content {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}

@@ -1,0 +1,118 @@
+﻿.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin: 2rem auto 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 8px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.3rem;
+    background: var(--white);
+}
+
+.table-wrapper {
+    overflow: auto;
+    width: 100%;
+    max-height: 400px;
+}
+
+
+.table {
+    width: 100%;
+    border-radius: 8px;
+}
+
+    .table thead {
+    }
+
+    .table th {
+        padding: 1rem;
+        text-align: left;
+        position: sticky;
+        top: 0;
+    }
+
+        .table th:first-child {
+            border-top-left-radius: 8px;
+        }
+
+        .table th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+    .table td {
+        padding: 1rem;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .table tbody tr:nth-child(odd) {
+        background: var(--white);
+    }
+
+    .table thead tr {
+    }
+
+    .table tbody {
+        overflow-y: auto;
+    }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+}
+
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+}
+
+.btn-acao-task .material-symbols-outlined {
+    color: white;
+}
+
+.btn-acao-task {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.5rem;
+    background: var(--action-1);
+    transition: background-color 0.15s;
+}
+
+    .btn-acao-task:hover {
+        background: var(--action-1-hover);
+    }
+
+    .btn-acao-task.add {
+        color: var(--white);
+        padding: 0.75rem 1rem;
+    }
