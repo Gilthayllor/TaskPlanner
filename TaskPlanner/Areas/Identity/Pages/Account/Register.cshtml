@@ -1,0 +1,57 @@
+﻿@page "/Identity/Account/Register"
+@model TaskPlanner.Areas.Identity.Pages.Account.RegisterModel
+
+<div class="register-container">
+    <div class="register-img"></div>
+    <div class="content">
+        <img src="/assets/taskPlannerLogo.svg" alt="TaskPlanner Logo" />
+        <div class="form-container">
+            <h1>Faça seu registro!</h1>
+
+            <form class="register-form" fo>
+                <div class="input-container">
+                    <span class="material-symbols-outlined icon" style="font-size: 24px">account_circle</span>
+                    <div class="input">
+                        <input asp-for="UserRegisterForm.FirstName" class="edit-input" placeholder="Nome" />
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <span class="material-symbols-outlined icon" style="font-size: 24px">account_circle</span>
+                    <div class="input">
+                        <input asp-for="UserRegisterForm.LastName" class="edit-input" placeholder="Sobrenome" />
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <span class="material-symbols-outlined icon" style="font-size: 24px">email</span>
+                    <div class="input">
+                        <input asp-for="UserRegisterForm.Email" class="edit-input" placeholder="E-mail" />
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <span class="material-symbols-outlined icon" style="font-size: 24px">lock</span>
+                    <div class="input">
+                        <input asp-for="UserRegisterForm.Password" class="edit-input" placeholder="Senha" />
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <span class="material-symbols-outlined icon" style="font-size: 24px">lock</span>
+                    <div class="input">
+                        <input asp-for="UserRegisterForm.ConfirmPassword" class="edit-input" placeholder="Confirmação de senha" />
+                    </div>
+                </div>
+
+
+                <button class="btn-register" type="submit">
+                    Registrar
+                </button>
+            </form>
+
+            <a class="login-link">Já possui uma conta?</a>
+        </div>
+    </div>
+</div>
+
