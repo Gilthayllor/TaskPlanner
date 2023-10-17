@@ -29,12 +29,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 builder.Services.AddScoped<AuthenticationStateProvider, TaskPlannerAuthenticationStateProvider>();
 
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(x =>
-    {
-        x.LoginPath = "/login";
-        x.ExpireTimeSpan = TimeSpan.FromDays(1);
-    });
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//    .AddCookie(x =>
+//    {
+//        x.LoginPath = "/login";
+//        x.ExpireTimeSpan = TimeSpan.FromDays(1);
+//    });
 
 builder.Services.AddAuthorizationCore();
 

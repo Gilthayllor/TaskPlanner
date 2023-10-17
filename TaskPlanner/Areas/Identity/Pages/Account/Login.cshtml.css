@@ -1,4 +1,4 @@
-﻿.register-container {
+﻿.login-container {
     height: 100vh;
     display: flex;
     align-items: stretch;
@@ -17,8 +17,8 @@
     margin-top: 3rem;
 }
 
-.register-img {
-    background: url("/assets/register-img.svg") no-repeat center;
+.login-img {
+    background: url("/assets/login-img.svg") no-repeat center;
     flex-grow: 1;
     background-size: cover;
 }
@@ -88,26 +88,27 @@
         cursor: not-allowed;
     }
 
-.login-link {
+.register-link {
     margin-top: 1rem;
     display: flex;
     justify-content: center;
     font-size: 0.875rem;
     cursor: pointer;
     text-decoration: none;
+
     transition: color 0.15s;
 }
 
-    .login-link:hover {
+    .register-link:hover {
         color: var(--primary-hover);
     }
 
-    .login-link:visited, .login-link:active {
+    .register-link:visited, .register-link:active {
         color: inherit;
     }
 
 @media (max-width: 700px) {
-    .register-img {
+    .login-img {
         display: none;
     }
 }
