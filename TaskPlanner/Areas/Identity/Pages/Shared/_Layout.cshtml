@@ -21,6 +21,14 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    @RenderBody()
+    <div class="content">
+        @RenderBody()
+    </div>
+    
+    <script src="/scripts/jquery/jquery.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
+
+
 </html>

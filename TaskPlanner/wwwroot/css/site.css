@@ -9,6 +9,7 @@
     --secondary: #364156ff;
     --background-primary: #EFEFEF;
     --silver: #cdcdcdff;
+    --danger: #ff595c;
     --action-2: #ff595c;
     --action-2-hover: #ff7174;
     --action-1: #32936fff;
@@ -57,7 +58,7 @@
     -webkit-font-smoothing: antialiased;
 }
 
-body {
+body, body.content {
     background: var(--background-primary);
     color: var(--primary);
     -webkit-font-smoothing: antialiased;

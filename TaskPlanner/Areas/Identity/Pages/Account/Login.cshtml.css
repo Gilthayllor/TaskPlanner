@@ -28,7 +28,7 @@
 }
 
 .form-container h1 {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     align-self: start;
 }
@@ -96,15 +96,15 @@
     cursor: pointer;
     text-decoration: none;
 
-    transition: color 0.15s;
+    transition: color 0.15s text-decoration 3s;
 }
-
-    .register-link:hover {
-        color: var(--primary-hover);
-    }
 
     .register-link:visited, .register-link:active {
         color: inherit;
+    }
+
+    .register-link:hover {
+        color: var(--primary-hover);
     }
 
 @media (max-width: 700px) {

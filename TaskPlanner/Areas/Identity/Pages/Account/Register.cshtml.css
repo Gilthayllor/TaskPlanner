@@ -28,7 +28,7 @@
 }
 
 .form-container h1 {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     align-self: start;
 }
@@ -98,12 +98,12 @@
     transition: color 0.15s;
 }
 
-    .login-link:hover {
-        color: var(--primary-hover);
-    }
-
     .login-link:visited, .login-link:active {
         color: inherit;
+    }
+
+    .login-link:hover {
+        color: var(--primary-hover);
     }
 
 @media (max-width: 700px) {

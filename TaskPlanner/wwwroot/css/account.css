@@ -14,10 +14,10 @@
         opacity: 0.5;
     }
 
-.edit-input:focus {
-    outline: none;
-    box-shadow: none;
-}
+    .edit-input:focus {
+        outline: none;
+        box-shadow: none;
+    }
 
 
 .edit-validation-message {
@@ -27,6 +27,12 @@
 
 .register-form, .login-form {
     width: 300px;
-    text-align:center;
+    text-align: center;
+}
 
+.form-group-account .account-text-danger {
+    display: flex;
+    color: var(--danger);
+    font-size: 0.875rem;
+    font-weight: 500;
 }

@@ -1,6 +1,11 @@
 ﻿@page "/Identity/Account/Register"
 @model TaskPlanner.Areas.Identity.Pages.Account.RegisterModel
 
+@section Scripts {
+    <script src="/scripts/jquery-validate/jquery.validate.min.js"></script>
+    <script src="/scripts/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
 <div class="register-container">
     <div class="register-img"></div>
     <div class="content">
@@ -8,40 +13,55 @@
         <div class="form-container">
             <h1>Faça seu registro!</h1>
 
-            <form class="register-form" fo>
-                <div class="input-container">
-                    <span class="material-symbols-outlined icon" style="font-size: 24px">account_circle</span>
-                    <div class="input">
-                        <input asp-for="UserRegisterForm.FirstName" class="edit-input" placeholder="Nome" />
+            <form class="register-form">
+                <div class="form-group-account">
+                    <div class="input-container">
+                        <span class="material-symbols-outlined icon" style="font-size: 24px">account_circle</span>
+                        <div class="input">
+                            <input asp-for="UserRegisterForm.FirstName" class="edit-input" placeholder="Nome" />
+                        </div>
                     </div>
+                    <span asp-validation-for="UserRegisterForm.FirstName" class="account-text-danger"></span>
                 </div>
 
-                <div class="input-container">
-                    <span class="material-symbols-outlined icon" style="font-size: 24px">account_circle</span>
-                    <div class="input">
-                        <input asp-for="UserRegisterForm.LastName" class="edit-input" placeholder="Sobrenome" />
+                <div class="form-group-account">
+                    <div class="input-container">
+                        <span class="material-symbols-outlined icon" style="font-size: 24px">account_circle</span>
+                        <div class="input">
+                            <input asp-for="UserRegisterForm.LastName" class="edit-input" placeholder="Sobrenome" />
+                        </div>
                     </div>
+                    <span asp-validation-for="UserRegisterForm.LastName" class="account-text-danger"></span>
                 </div>
 
-                <div class="input-container">
-                    <span class="material-symbols-outlined icon" style="font-size: 24px">email</span>
-                    <div class="input">
-                        <input asp-for="UserRegisterForm.Email" class="edit-input" placeholder="E-mail" />
+                <div class="form-group-account">
+                    <div class="input-container">
+                        <span class="material-symbols-outlined icon" style="font-size: 24px">email</span>
+                        <div class="input">
+                            <input asp-for="UserRegisterForm.Email" class="edit-input" placeholder="E-mail" />
+                        </div>
                     </div>
+                    <span asp-validation-for="UserRegisterForm.Email" class="account-text-danger"></span>
                 </div>
 
-                <div class="input-container">
-                    <span class="material-symbols-outlined icon" style="font-size: 24px">lock</span>
-                    <div class="input">
-                        <input asp-for="UserRegisterForm.Password" class="edit-input" placeholder="Senha" />
+                <div class="form-group-account">
+                    <div class="input-container">
+                        <span class="material-symbols-outlined icon" style="font-size: 24px">lock</span>
+                        <div class="input">
+                            <input asp-for="UserRegisterForm.Password" class="edit-input" placeholder="Senha" />
+                        </div>
                     </div>
+                    <span asp-validation-for="UserRegisterForm.Password" class="account-text-danger"></span>
                 </div>
 
-                <div class="input-container">
-                    <span class="material-symbols-outlined icon" style="font-size: 24px">lock</span>
-                    <div class="input">
-                        <input asp-for="UserRegisterForm.ConfirmPassword" class="edit-input" placeholder="Confirmação de senha" />
+                <div class="form-group-account">
+                    <div class="input-container">
+                        <span class="material-symbols-outlined icon" style="font-size: 24px">lock</span>
+                        <div class="input">
+                            <input asp-for="UserRegisterForm.ConfirmPassword" class="edit-input" placeholder="Confirmação de senha" />
+                        </div>
                     </div>
+                    <span asp-validation-for="UserRegisterForm.ConfirmPassword" class="account-text-danger"></span>
                 </div>
 
 
