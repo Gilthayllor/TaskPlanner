@@ -33,9 +33,14 @@
                     <span asp-validation-for="LoginViewModel.Password" class="account-text-danger"></span>
                 </div>
 
+                <div class="form-group-remember">
+                    <input asp-for="LoginViewModel.Remember" title="rememberMe">
+                    <span>Lembrar de mim</span>
+                </div>
+
                 <span class="account-text-danger @(string.IsNullOrEmpty(Model.ErrorMessage) ? "hide-account-error" : "display-account-error")">@Model.ErrorMessage</span>
 
-                <button class="btn-register" type="submit">
+                <button class="btn-login" type="submit">
                     Login
                 </button>
             </form>

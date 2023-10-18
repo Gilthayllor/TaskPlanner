@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using TaskPlanner.Data;
 using TaskPlanner.Entities;
 using TaskPlanner.Services.Interfaces;
 using TaskPlanner.ViewModels;
@@ -9,32 +8,31 @@ namespace TaskPlanner.Services.Implementations
     public class UserService : IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly DataContext _dataContext;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public UserService(UserManager<ApplicationUser> userManager, DataContext dataContext)
+        public UserService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
-            _dataContext = dataContext;
+            _signInManager = signInManager;
         }
 
-        public async Task<ResultViewModel<LoginResultViewModel>> LoginAsync(LoginViewModel loginViewModel)
+        public async Task<ResultViewModel> LoginAsync(LoginViewModel loginViewModel)
         {
-            var user = _dataContext.ApplicationUsers.FirstOrDefault(x => (x.UserName ?? "").ToUpper() == loginViewModel.Email.ToUpper());
+            var user = await _userManager.FindByEmailAsync(loginViewModel.Email);
 
-            var isCorrectPassword = await _userManager.CheckPasswordAsync(user ?? new ApplicationUser(), loginViewModel.Password);
+            var result = await _signInManager.PasswordSignInAsync(user ?? new ApplicationUser(), loginViewModel.Password, loginViewModel.Remember, false);
 
-            if (user == null || !isCorrectPassword)
+            if (!result.Succeeded)
             {
                 return new ResultViewModel<LoginResultViewModel>("Usuário ou senha incorretos.");
             }
 
-            return new ResultViewModel<LoginResultViewModel>(new LoginResultViewModel
-            {
-                Id = user.Id,
-                Email = user.UserName!,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-            });
+            return result.Succeeded ? new ResultViewModel() : new ResultViewModel("Usuário ou senha incorretos.");
+        }
+
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
         }
 
         public async Task<ResultViewModel> RegisterAsync(UserRegisterViewModel userRegisterViewModel)

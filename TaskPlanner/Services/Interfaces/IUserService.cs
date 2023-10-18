@@ -6,6 +6,8 @@ namespace TaskPlanner.Services.Interfaces
     {
         Task<ResultViewModel> RegisterAsync(UserRegisterViewModel userRegisterViewModel);
 
-        Task<ResultViewModel<LoginResultViewModel>> LoginAsync(LoginViewModel loginViewModel);
+        Task<ResultViewModel> LoginAsync(LoginViewModel loginViewModel);
+
+        Task LogoutAsync();
     }
 }

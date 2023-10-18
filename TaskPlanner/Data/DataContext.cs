@@ -89,7 +89,7 @@ namespace TaskPlanner.Data
                 new TaskItem("Fazer deploy da aplicação TaskPlanner", "Fazer o deploy da aplicação em produção.")
                 {
                     Id = "A12AC436-5B55-44B4-AE71-C20C7948004F",
-                    UserId = userId, 
+                    UserId = userId,
                     CategoryId = categoryId
                 }
             });

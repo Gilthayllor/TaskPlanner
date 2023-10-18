@@ -1,12 +1,9 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TaskPlanner.Data;
 using TaskPlanner.Entities;
 using TaskPlanner.Repositories.Implementations;
 using TaskPlanner.Repositories.Interfaces;
-using TaskPlanner.Services;
 using TaskPlanner.Services.Implementations;
 using TaskPlanner.Services.Interfaces;
 
@@ -59,6 +56,6 @@ void MigrateDabase()
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<DataContext>();
 
-    if(db.Database.GetMigrations().Any())
+    if (db.Database.GetMigrations().Any())
         db.Database.Migrate();
 }

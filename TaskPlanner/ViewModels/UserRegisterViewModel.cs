@@ -11,11 +11,11 @@ namespace TaskPlanner.ViewModels
         [Required(ErrorMessage = "O Sobrenome é obrigatório.")]
         [MinLength(3, ErrorMessage = "O Sobrenome deve conter no mínimo 3 caracteres.")]
         public string LastName { get; set; } = null!;
-        
+
         [DataType(DataType.EmailAddress, ErrorMessage = "Digite um Email válido.")]
         [Required(ErrorMessage = "O Email é obrigatório.")]
         public string Email { get; set; } = null!;
-        
+
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "A Senha é obrigatória.")]
         [MinLength(6, ErrorMessage = "A senha deve conter no mínimo 6 caracteres.")]

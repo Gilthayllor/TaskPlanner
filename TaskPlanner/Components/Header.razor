@@ -1,4 +1,6 @@
-﻿<header class="header">
+﻿@inject NavigationManager _navigationManager;
+
+<header class="header">
 
     <div class="wrapper-content header-content">
         <div class="logo">
@@ -12,6 +14,11 @@
                     <a href="/tasks">Tarefas</a>
                 </li>
             </ul>
+            <a href="/Identity/Account/Logout" class="signup-button">Sair</a>
         </nav>
     </div>
 </header>
+
+@code {
+
+}

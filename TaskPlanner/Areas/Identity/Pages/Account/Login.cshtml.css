@@ -15,8 +15,8 @@
 
 .form-container {
     margin-top: 3rem;
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
 }
 
 .login-img {
@@ -68,7 +68,7 @@
     flex: 1;
 }
 
-.btn-register {
+.btn-login {
     padding: 1rem 1.5rem;
     margin-top: 1rem;
     border-radius: 8px;
@@ -81,11 +81,11 @@
     transition: background-color 0.15s;
 }
 
-    .btn-register:not(:disabled):hover {
+    .btn-login:not(:disabled):hover {
         background: var(--primary-hover);
     }
 
-    .btn-register:disabled {
+    .btn-login:disabled {
         opacity: 0.7;
         cursor: not-allowed;
     }
@@ -109,6 +109,18 @@
     .register-link:hover {
         color: var(--primary-hover);
     }
+
+.form-group-remember {
+    display:flex;
+    margin-top: 5px;
+    font-size: 0.875rem;
+    align-items:center;
+    justify-content:start;
+}
+
+.form-group-remember span{
+    margin-left: 5px;
+}
 
 @media (max-width: 700px) {
     .login-img {

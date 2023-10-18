@@ -11,5 +11,7 @@ namespace TaskPlanner.ViewModels
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Digite sua Senha.")]
         public string Password { get; set; } = null!;
+
+        public bool Remember { get; set; }
     }
 }

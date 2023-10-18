@@ -40,7 +40,7 @@ namespace TaskPlanner.Services.Implementations
                 throw;
             }
         }
-        
+
         public async Task<IEnumerable<TaskItemViewModel>> GetAllTasks()
         {
             try
