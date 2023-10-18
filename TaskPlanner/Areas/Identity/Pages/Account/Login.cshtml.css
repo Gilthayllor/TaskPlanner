@@ -15,6 +15,8 @@
 
 .form-container {
     margin-top: 3rem;
+    display:flex;
+    flex-direction:column;
 }
 
 .login-img {
@@ -95,8 +97,9 @@
     font-size: 0.875rem;
     cursor: pointer;
     text-decoration: none;
-
-    transition: color 0.15s text-decoration 3s;
+    align-self: center;
+    transition: color 0.15s;
+    color: var(--primary);
 }
 
     .register-link:visited, .register-link:active {

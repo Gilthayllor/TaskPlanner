@@ -31,6 +31,26 @@ namespace TaskPlanner.Areas.Identity.Pages.Account
                 return Redirect("/");
             }
 
+            Success = false;
+            UserRegisterForm = new UserRegisterViewModel();
+            ErrorMessage = string.Empty;
+
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var result = await _userService.RegisterAsync(UserRegisterForm);
+
+            if (!result.Success)
+            {
+                ErrorMessage = result.Errors?.FirstOrDefault() ?? "Ocorreu um erro ao fazer o registro do usuário.";
+            }
+            else
+            {
+                Success = true;
+            }
+
             return Page();
         }
     }

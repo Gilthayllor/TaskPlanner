@@ -30,9 +30,10 @@ namespace TaskPlanner.Services.Implementations
 
             return new ResultViewModel<LoginResultViewModel>(new LoginResultViewModel
             {
+                Id = user.Id,
                 Email = user.UserName!,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
             });
         }
 

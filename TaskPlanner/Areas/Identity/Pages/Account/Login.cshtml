@@ -12,7 +12,7 @@
         <div class="form-container">
             <h1>Bem vindo de volta!</h1>
 
-            <form class="login-form">
+            <form class="login-form" method="post">
                 <div class="form-group-account">
                     <div class="input-container">
                         <span class="material-symbols-outlined icon" style="font-size: 24px">email</span>
@@ -33,10 +33,13 @@
                     <span asp-validation-for="LoginViewModel.Password" class="account-text-danger"></span>
                 </div>
 
+                <span class="account-text-danger @(string.IsNullOrEmpty(Model.ErrorMessage) ? "hide-account-error" : "display-account-error")">@Model.ErrorMessage</span>
+
                 <button class="btn-register" type="submit">
                     Login
                 </button>
             </form>
+
 
             <a href="/Identity/Account/Register" class="register-link">Ainda não possui uma conta?</a>
         </div>

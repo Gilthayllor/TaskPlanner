@@ -6,6 +6,12 @@
     <script src="/scripts/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
 
+<div class="success-register" style="display: @(Model.Success ? "flex" : "none")">
+    <p>
+        Usuário registrado com sucesso!
+    </p>
+    <a href="/Identity/Account/Login">Clique aqui para fazer login.</a>
+</div>
 <div class="register-container">
     <div class="register-img"></div>
     <div class="content">
@@ -13,7 +19,7 @@
         <div class="form-container">
             <h1>Faça seu registro!</h1>
 
-            <form class="register-form">
+            <form class="register-form" method="post">
                 <div class="form-group-account">
                     <div class="input-container">
                         <span class="material-symbols-outlined icon" style="font-size: 24px">account_circle</span>
@@ -64,11 +70,13 @@
                     <span asp-validation-for="UserRegisterForm.ConfirmPassword" class="account-text-danger"></span>
                 </div>
 
+                <span class="account-text-danger @(string.IsNullOrEmpty(Model.ErrorMessage) ? "hide-account-error" : "display-account-error")">@Model.ErrorMessage</span>
 
                 <button class="btn-register" type="submit">
                     Registrar
                 </button>
             </form>
+
 
             <a href="/Identity/Account/Login" class="login-link">Já possui uma conta?</a>
         </div>

@@ -1,0 +1,17 @@
+﻿@inject NavigationManager _navigationManager;
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        try
+        {
+            _navigationManager.NavigateTo("/Identity/Account/Login", true);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+
+        base.OnAfterRender(firstRender);
+    }
+
+}

@@ -10,6 +10,7 @@
     --background-primary: #EFEFEF;
     --silver: #cdcdcdff;
     --danger: #ff595c;
+    --success: #32936fff;
     --action-2: #ff595c;
     --action-2-hover: #ff7174;
     --action-1: #32936fff;
@@ -48,7 +49,7 @@
 
 :focus {
     outline: transparent;
-    box-shadow: 0 0 0 1px var(--primary);
+    /*box-shadow: 0 0 0 1px var(--primary);*/
 }
 
 * {

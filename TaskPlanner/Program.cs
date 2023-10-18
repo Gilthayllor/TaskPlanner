@@ -26,17 +26,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
 
-builder.Services.AddScoped<AuthenticationStateProvider, TaskPlannerAuthenticationStateProvider>();
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.ExpireTimeSpan = TimeSpan.FromDays(1);
+});
 
-
-//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-//    .AddCookie(x =>
-//    {
-//        x.LoginPath = "/login";
-//        x.ExpireTimeSpan = TimeSpan.FromDays(1);
-//    });
-
-builder.Services.AddAuthorizationCore();
+builder.Services.AddAuthenticationCore();
 
 var app = builder.Build();
 
@@ -46,9 +41,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseStaticFiles();
-
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseStaticFiles();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");

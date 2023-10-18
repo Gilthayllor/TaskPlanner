@@ -1,4 +1,10 @@
-﻿@inherits LayoutComponentBase
+﻿@using Microsoft.AspNetCore.Authorization;
+@inherits LayoutComponentBase
+
+@attribute [AllowAnonymous]
 
 <Header />
 <main class="wrapper-content"> @Body </main>
+
+
+

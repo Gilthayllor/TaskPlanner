@@ -25,14 +25,27 @@
     margin-top: 0.3rem;
 }
 
-.register-form, .login-form {
+.register-form, .login-form, .display-account-error {
     width: 300px;
+}
+
+.register-form, .login-form {
     text-align: center;
 }
 
-.form-group-account .account-text-danger {
+.account-text-danger {
     display: flex;
     color: var(--danger);
     font-size: 0.875rem;
     font-weight: 500;
+}
+
+.hide-account-error {
+    display: none;
+}
+
+.display-account-error {
+    display: flex;
+    margin-top: 0.2rem;
+    text-align: left;
 }
