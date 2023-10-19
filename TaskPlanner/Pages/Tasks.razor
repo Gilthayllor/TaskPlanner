@@ -1,58 +1,90 @@
-﻿@page "/tasks"
+﻿@page "/"
+@attribute [Authorize]
 
 @inject ITaskService _taskService;
 
-<div>
-    <div class="wrapper">
-        <div class="header">
-            <h1 class="title">Tarefas</h1>
-            <button class="btn-acao-task add" type="button">
-                Nova Tarefa
-            </button>
-        </div>
-        <div class="table-wrapper">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Descrição</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (_tasks != null)
-                    {
-                        @foreach (var task in _tasks)
-                        {
-                            <tr @key="task.Id">
-                                <td>@task.Title</td>
-                                <td>@task.Description</td>
-                                <td>
-                                    @if (task.Completed)
-                                    {
-                                        <span class="material-symbols-outlined">task_alt</span>
-                                    }
-                                    else
-                                    {
-                                        <button class="btn-acao-task">
-                                            Concluir Tarefa
-                                        </button>
-                                    }
-                                </td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-            </table>
-        </div>
+<div class="wrapper">
+    <div class="header">
+        <h1 class="title">Tarefas</h1>
     </div>
-</div>
 
-@code {
-    private IEnumerable<TaskItemViewModel> _tasks = new List<TaskItemViewModel>();
+    <div class="tasks-container">
+        @foreach (var task in _tasks.OrderBy(x => x.Completed))
+        {
+            <TaskComponent IsInEditMode="false" Description="@task.Description" @key="task.Id"
+                           Completed="@task.Completed" Id="@task.Id" OnComplete="(id) => HandleCompleteTask(id)" 
+                           OnDelete="(id) => HandleDeleteTask(id)"/>
+        }
+    </div>
+
+    <div class="add-task-container-absolute wrapper-content">
+        <TaskComponent IsInEditMode OnAdd="(newTask) => HandleAddTask(newTask)" />
+     </div>
+ </div>
+
+ @code {
+    private string IdUser = string.Empty;
+
+    [CascadingParameter]
+    private Task<AuthenticationState>? authenticationState { get; set; }
+
+    private List<TaskItemViewModel> _tasks = new List<TaskItemViewModel>();
 
     protected override async Task OnInitializedAsync()
     {
-        _tasks = await _taskService.GetAllTasks();
+        if (authenticationState != null)
+        {
+            var authState = await authenticationState;
+
+            var user = authState?.User;
+
+            if (user?.Identity is not null && user.Identity.IsAuthenticated)
+            {
+                var claim = user.FindFirst(x => x.Type == System.Security.Claims.ClaimTypes.NameIdentifier);
+
+                if (claim != null)
+                    IdUser = claim.Value;
+            }
+        }
+
+        _tasks = new List<TaskItemViewModel>(await _taskService.GetAllTasksByUser(IdUser));
+    }
+
+    private async void HandleCompleteTask(string id)
+    {
+        var result = await _taskService.CompleteTask(id);
+
+        var taskToUpdate = _tasks.FirstOrDefault(x => x.Id == id);
+        if (taskToUpdate != null)
+        {
+            taskToUpdate.Completed = true;
+            StateHasChanged();
+        }
+    }
+
+    private async void HandleDeleteTask(string id)
+    {
+        var success = await _taskService.DeleteTaskById(id);
+
+        if (success)
+        {
+            var taskToDelete = _tasks.FirstOrDefault(x => x.Id == id);
+            if (taskToDelete != null)
+            {
+                _tasks.Remove(taskToDelete);
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async void HandleAddTask(NewTaskViewModel newTask)
+    {
+        var result = await _taskService.AddTask(newTask, IdUser);
+
+        if (result != null)
+        {
+            _tasks.Add(result);
+            StateHasChanged();
+        }
     }
 }

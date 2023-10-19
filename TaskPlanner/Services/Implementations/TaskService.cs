@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TaskPlanner.Entities;
 using TaskPlanner.Repositories.Interfaces;
 using TaskPlanner.Services.Interfaces;
 using TaskPlanner.ViewModels;
@@ -68,13 +69,13 @@ namespace TaskPlanner.Services.Implementations
             }
         }
 
-        public async Task<TaskItemViewModel> UpdateTask(TaskItemViewModel task)
+        public async Task<TaskItemViewModel> CompleteTask(string id)
         {
             try
             {
-                var result = await _taskRepository.GetTaskById(task.Id) ?? throw new Exception("Task não encontrada.");
+                var result = await _taskRepository.GetTaskById(id) ?? throw new Exception("Task não encontrada.");
 
-                _mapper.Map(task, result);
+                result.Completed = true;
 
                 await _taskRepository.UpdateTask(result);
 
@@ -85,6 +86,27 @@ namespace TaskPlanner.Services.Implementations
 
                 throw;
             }
+        }
+
+        public async Task<TaskItemViewModel> AddTask(NewTaskViewModel newTaskViewModel, string idUser)
+        {
+            try
+            {
+                var newTask = new TaskItem(newTaskViewModel.Description)
+                {
+                    UserId = idUser,
+                };
+
+                var result = await _taskRepository.AddTask(newTask);
+
+                return _mapper.Map<TaskItemViewModel>(result);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }

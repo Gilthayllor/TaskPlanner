@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -164,7 +165,6 @@ namespace TaskPlanner.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Completed = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
@@ -183,16 +183,15 @@ namespace TaskPlanner.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "b58aecd4-5684-4d16-ba39-6ef38b4c7d97", 0, "2c7ec1e2-270b-4f77-be12-2338fb7fa71f", "admin@taskplanner.com", false, "Admin", "TaskPlanner", false, null, "ADMIN@TASKPLANNER.COM", null, "AQAAAAIAAYagAAAAELmLhNjC9ucwfa6cHTYXxTh8bnnQqeshmQgqg4WFIT9xBT8e1QkyanXqbX0Vj11RCA==", null, false, "c793f5d7-189a-44ce-8660-f43b0c43bb9a", false, "admin@taskplanner.com" });
+                values: new object[] { "4C4FC1E6-5712-4CFB-9A60-AF38CF80CA81", 0, "0014e9bd-982d-433a-afe0-45599a6a4df0", "admin@taskplanner.com", false, "Admin", "TaskPlanner", false, null, "ADMIN@TASKPLANNER.COM", null, "AQAAAAIAAYagAAAAEIHrgl5ospoPQNlm2jXWHJWzgHNkgPi15tcLZTEpVBZ2mMbTXXyb5nv1+69y2NeEvw==", null, false, "1d2b6d11-71ab-4e58-893b-1c222dab5b2b", false, "admin@taskplanner.com" });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
-                columns: new[] { "Id", "Completed", "Description", "Title", "UserId" },
+                columns: new[] { "Id", "Completed", "Description", "UserId" },
                 values: new object[,]
                 {
-                    { "0d14d7ee-1336-49a9-bca3-8aa4bb3022ec", false, "Jantar com minha esposa.", "Jantar", "b58aecd4-5684-4d16-ba39-6ef38b4c7d97" },
-                    { "76895b2c-4055-4fa4-b235-8333fca31211", false, "Trabalhar usando C#.", "Trabalhar", "b58aecd4-5684-4d16-ba39-6ef38b4c7d97" },
-                    { "d2014833-9973-4c9b-9d22-17d626e0e9c7", false, "Estudar C# durante a noite.", "Estudar C#", "b58aecd4-5684-4d16-ba39-6ef38b4c7d97" }
+                    { "A12AC436-5B55-44B4-AE71-C20C7948004F", false, "Fazer deploy da aplicação TaskPlanner", "4C4FC1E6-5712-4CFB-9A60-AF38CF80CA81" },
+                    { "B05F1A36-B959-41F7-A66B-CC4D99FB5F06", false, "Testar a aplicação TaskPlanner", "4C4FC1E6-5712-4CFB-9A60-AF38CF80CA81" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -46,5 +46,13 @@ namespace TaskPlanner.Repositories.Implementations
 
             return task;
         }
+
+        public async Task<TaskItem> AddTask(TaskItem task)
+        {
+            _dataContext.Tasks.Add(task);
+            await _dataContext.SaveChangesAsync();
+
+            return task;
+        }
     }
 }

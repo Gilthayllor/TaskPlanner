@@ -1,5 +1,7 @@
 #app {
     height: 100vh;
+    display:flex;
+    flex-direction: column;
 }
 
 :root {
@@ -81,3 +83,31 @@ body, input, textarea, button {
     margin: 0 auto;
     padding: 0 1rem;
 }
+
+.margin-top-content {
+    margin-top: 6rem;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+}
+
+/*.input-task {
+    flex-grow: 1;
+    background-color: transparent;
+    border: 0;
+    font-size: 0.875rem;
+    margin-left: 3px;
+}
+
+.input-task::placeholder, .input-task {
+    color: var(--white);
+}*/

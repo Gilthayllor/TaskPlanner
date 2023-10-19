@@ -12,7 +12,7 @@ using TaskPlanner.Data;
 namespace TaskPlanner.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231013204613_InitialMigration")]
+    [Migration("20231018220434_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -233,18 +233,18 @@ namespace TaskPlanner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b58aecd4-5684-4d16-ba39-6ef38b4c7d97",
+                            Id = "4C4FC1E6-5712-4CFB-9A60-AF38CF80CA81",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2c7ec1e2-270b-4f77-be12-2338fb7fa71f",
+                            ConcurrencyStamp = "0014e9bd-982d-433a-afe0-45599a6a4df0",
                             Email = "admin@taskplanner.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
                             LastName = "TaskPlanner",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TASKPLANNER.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAELmLhNjC9ucwfa6cHTYXxTh8bnnQqeshmQgqg4WFIT9xBT8e1QkyanXqbX0Vj11RCA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIHrgl5ospoPQNlm2jXWHJWzgHNkgPi15tcLZTEpVBZ2mMbTXXyb5nv1+69y2NeEvw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c793f5d7-189a-44ce-8660-f43b0c43bb9a",
+                            SecurityStamp = "1d2b6d11-71ab-4e58-893b-1c222dab5b2b",
                             TwoFactorEnabled = false,
                             UserName = "admin@taskplanner.com"
                         });
@@ -263,11 +263,6 @@ namespace TaskPlanner.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -281,27 +276,17 @@ namespace TaskPlanner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d2014833-9973-4c9b-9d22-17d626e0e9c7",
+                            Id = "B05F1A36-B959-41F7-A66B-CC4D99FB5F06",
                             Completed = false,
-                            Description = "Estudar C# durante a noite.",
-                            Title = "Estudar C#",
-                            UserId = "b58aecd4-5684-4d16-ba39-6ef38b4c7d97"
+                            Description = "Testar a aplicação TaskPlanner",
+                            UserId = "4C4FC1E6-5712-4CFB-9A60-AF38CF80CA81"
                         },
                         new
                         {
-                            Id = "76895b2c-4055-4fa4-b235-8333fca31211",
+                            Id = "A12AC436-5B55-44B4-AE71-C20C7948004F",
                             Completed = false,
-                            Description = "Trabalhar usando C#.",
-                            Title = "Trabalhar",
-                            UserId = "b58aecd4-5684-4d16-ba39-6ef38b4c7d97"
-                        },
-                        new
-                        {
-                            Id = "0d14d7ee-1336-49a9-bca3-8aa4bb3022ec",
-                            Completed = false,
-                            Description = "Jantar com minha esposa.",
-                            Title = "Jantar",
-                            UserId = "b58aecd4-5684-4d16-ba39-6ef38b4c7d97"
+                            Description = "Fazer deploy da aplicação TaskPlanner",
+                            UserId = "4C4FC1E6-5712-4CFB-9A60-AF38CF80CA81"
                         });
                 });
 

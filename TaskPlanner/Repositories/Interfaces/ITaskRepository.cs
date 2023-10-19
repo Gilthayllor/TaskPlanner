@@ -6,6 +6,7 @@ namespace TaskPlanner.Repositories.Interfaces
     {
         Task<IEnumerable<TaskItem>> GetAllTasks();
         Task<IEnumerable<TaskItem>> GetAllTasksByUser(string userId);
+        Task<TaskItem> AddTask(TaskItem task);
         Task<TaskItem?> GetTaskById(string id);
         Task<TaskItem> UpdateTask(TaskItem task);
         Task<bool> DeleteTaskById(string id);
