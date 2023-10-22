@@ -46,7 +46,7 @@ namespace TaskPlanner.Services.Implementations
                 NormalizedEmail = (userRegisterViewModel.Email ?? "").ToUpper(),
             };
 
-            var result = await _userManager.CreateAsync(applicationUser);
+            var result = await _userManager.CreateAsync(applicationUser, userRegisterViewModel.Password);
 
             return result switch
             {

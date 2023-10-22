@@ -100,7 +100,12 @@ body, input, textarea, button {
     background: var(--primary);
 }
 
-/*.input-task {
+.task-form {
+    display: flex;
+    flex: 1;
+}
+
+.input-task {
     flex-grow: 1;
     background-color: transparent;
     border: 0;
@@ -110,4 +115,4 @@ body, input, textarea, button {
 
 .input-task::placeholder, .input-task {
     color: var(--white);
-}*/
+}

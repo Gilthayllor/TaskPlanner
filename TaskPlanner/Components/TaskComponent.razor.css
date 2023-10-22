@@ -18,14 +18,6 @@
         background: var(--primary);
     }
 
-    .task .input-task {
-        flex-grow: 1;
-        background-color: transparent;
-        border: 0;
-        font-size: 0.875rem;
-        margin-left: 3px;
-    }
-
 .task-completed {
     text-decoration: line-through;
 }

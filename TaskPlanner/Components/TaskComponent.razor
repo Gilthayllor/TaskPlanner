@@ -1,7 +1,8 @@
-﻿<div class="task">
-    @if (!IsInEditMode)
-    {
-        if (Completed)
+﻿@inject IJSRuntime _jsRuntime
+
+<div class="task">
+
+        @if (Completed)
         {
             <span class="material-symbols-outlined icon radio-marked">radio_button_checked</span>
         }
@@ -10,22 +11,12 @@
             <span class="material-symbols-outlined icon radio" @onclick="() => OnCompleteClick(Id)">radio_button_unchecked</span>
         }
 
-        <input type="text" value="@Description" readonly class="input-task @(Completed ? "task-completed" : "")" placeholder="Adicionar uma tarefa" />
+        <input type="text" value="@Description" readonly class="input-task @(Completed ? "task-completed" : "")" />
 
         <span class="material-symbols-outlined icon delete" @onclick="() => OnDeleteClick(Id)">delete</span>
-    }
-    else
-    {
-        <span class="material-symbols-outlined icon">add</span>
-        <input type="text" @bind-value="NewTask.Description" class="input-task" placeholder="Adicionar uma tarefa" @onkeydown="(e) => KeyHandler(e)" />
-    }
-
 </div>
 
 @code {
-
-    [Parameter]
-    public bool IsInEditMode { get; set; }
 
     [Parameter]
     public bool Completed { get; set; }
@@ -39,35 +30,18 @@
     private NewTaskViewModel NewTask { get; set; } = new NewTaskViewModel();
 
     [Parameter]
-    public Action<string>? OnComplete { get; set; }
-    
-    [Parameter]
-    public Action<string>? OnDelete { get; set; }
+    public EventCallback<string> OnCompleteCallback { get; set; }
 
     [Parameter]
-    public Action<NewTaskViewModel>? OnAdd { get; set; }
+    public EventCallback<string> OnDeleteCallback { get; set; }
 
-    private void OnCompleteClick(string id)
+    private async Task OnCompleteClick(string id)
     {
-        OnComplete?.Invoke(id);
-    }
-    
-    private void OnDeleteClick(string id)
-    {
-        OnDelete?.Invoke(id);
+        await OnCompleteCallback.InvokeAsync(id);
     }
 
-    private void KeyHandler(KeyboardEventArgs e)
+    private async Task OnDeleteClick(string id)
     {
-        if (e.Key == "Enter")
-        {
-            if (!string.IsNullOrEmpty(NewTask.Description))
-            {
-                OnAdd?.Invoke(NewTask);
-
-                NewTask = new NewTaskViewModel();
-                StateHasChanged();
-            }
-        }
+        await OnDeleteCallback.InvokeAsync(id);
     }
 }
