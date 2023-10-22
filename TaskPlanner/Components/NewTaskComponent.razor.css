@@ -1,0 +1,45 @@
+﻿.task {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    padding: 0.8rem 0.5rem;
+    background: var(--secondary);
+    border-radius: 8px;
+    transition: background-color 0.25s;
+    height: 3.5rem;
+}
+
+.task {
+    margin-top: 4px;
+}
+
+    .task:hover, .task:focus, .task:focus-within {
+        background: var(--primary);
+    }
+
+.task-completed {
+    text-decoration: line-through;
+}
+
+.task .icon {
+    font-size: 30px;
+    font-weight: 200;
+}
+
+.task input::placeholder, .task input, .task span {
+    color: var(--white);
+}
+
+.radio {
+    cursor: pointer;
+}
+
+.radio-marked {
+    cursor: inherit;
+}
+
+.icon.delete {
+    font-size: 24px;
+    cursor: pointer;
+}

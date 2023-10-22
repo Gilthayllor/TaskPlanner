@@ -1,0 +1,22 @@
+﻿@inject IJSRuntime _jsRuntime
+
+<div class="task">
+    <span class="material-symbols-outlined icon">add</span>
+    <input @bind-value="NewTask.Description" class="input-task" placeholder="Adicionar uma tarefa" @onkeypress="@(async (e) => await KeyPressHandler(e))" />
+</div>
+
+@code {
+    private NewTaskViewModel NewTask { get; set; } = new NewTaskViewModel();
+
+    [Parameter]
+    public EventCallback<NewTaskViewModel> OnAddCallback { get; set; }
+
+    private async Task KeyPressHandler(KeyboardEventArgs args)
+    {
+        if (args.Code == "Enter" && !args.ShiftKey)
+        {
+            await OnAddCallback.InvokeAsync(NewTask);
+            NewTask = new();
+        }
+    }
+}
